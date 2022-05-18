@@ -1,0 +1,11 @@
+.jh-banner {
+    color: black;
+    text-align: right;
+    padding: 32px;
+    border-bottom: solid 3px black;
+}
+
+.jh-logo {
+    height: 45px;
+    width: 45px;
+}
