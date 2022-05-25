@@ -1,6 +1,6 @@
-import { plantList } from '../datas/PlantList';
-import  CareScale  from './CareScale';
-import '../styles/ShoppingList.css';
+import { plantList } from '../datas/PlantList'
+import PlantItem from './PlantItem'
+import '../styles/ShoppingList.css'
 
 function ShoppingList() {
     const categories = plantList.reduce(
@@ -8,7 +8,7 @@ function ShoppingList() {
             acc.includes(plant.category) ? acc : acc.concat(plant.category),
         []
     )
-    console.log(categories);
+
     return (
         <div>
             <ul>
@@ -17,13 +17,14 @@ function ShoppingList() {
                 ))}
             </ul>
             <ul className='jh-plant-list'>
-                {plantList.map((plant) => (
-                    <li key={plant.id} className='jh-plant-item'>
-                        {plant.name} {plant.isBestSale ? <span>🔥</span> : null}
-                        {plant.isSpecialOffer && <div className='jh-sales'>Soldes</div>}
-                        <CareScale careType='water' scaleValue={plant.water} />
-                        <CareScale careType='light' scaleValue={plant.light} />
-                    </li>
+                {plantList.map(({ id, cover, name, water, light }) => (
+                    <PlantItem
+                        key={id}
+                        cover={cover}
+                        name={name}
+                        water={water}
+                        light={light}
+                    />
                 ))}
             </ul>
         </div>
